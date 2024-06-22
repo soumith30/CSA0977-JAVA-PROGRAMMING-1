@@ -1,0 +1,34 @@
+public class ShortestLoopPath {
+    public static void main(String args[]) {
+        String shortestPath = "for"; 
+        int[] arr = {1, 2, 3, 4, 5};
+        int i = 0;
+        switch (shortestPath) {
+            case "for":
+                for (i = 0; i < arr.length; i++) {
+                    System.out.print(arr[i] + " ");
+                }
+                break;
+
+            case "while":
+                i = 0;
+                while (i < arr.length) {
+                    System.out.print(arr[i] + " ");
+                    i++;
+                }
+                break;
+            case "do-while":
+                i = 0;
+                do {
+                    System.out.print(arr[i] + " ");
+                    i++;
+                } while (i < arr.length);
+                break;
+
+            default:
+                System.out.println("Invalid loop type specified.");
+        }
+
+        System.out.println("\nShortest loop path is: " + shortestPath);
+    }
+}
