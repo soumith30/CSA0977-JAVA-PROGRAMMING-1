@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class LcmGcdOfNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        if (n <= 0) {
+            System.out.println("Invalid input! n should be a positive integer.");
+            scanner.close();
+            return;
+        }
+        int[] numbers = new int[n];
+        int lcm = 1;
+        int gcd = 0;
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Number " + (i + 1) + " = ");
+            numbers[i] = scanner.nextInt();
+
+            gcd = calculateGCD(gcd, numbers[i]);
+            lcm = calculateLCM(lcm, numbers[i]);
+        }
+        System.out.println("LCM = " + lcm);
+        System.out.println("GCD = " + gcd);
+
+        scanner.close();
+    }
+    public static int calculateGCD(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return calculateGCD(b, a % b);
+    }
+
+    public static int calculateLCM(int a, int b) {
+        return (a / calculateGCD(a, b)) * b;
+    }
+}
