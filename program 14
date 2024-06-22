@@ -1,0 +1,10 @@
+public class MissingNumbersSeries {
+    public static void main(String[] args) {
+        int[] series = {1, 5, 11, 19};
+        int missing1 = series[3] + (series[3] - series[2]) + (series[2] - series[1]);
+        int missing2 = missing1 + (series[3] - series[2]);
+        System.out.println("Missing numbers in the series:");
+        System.out.println(missing1);
+        System.out.println(missing2);
+    }
+}
