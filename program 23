@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class ReverseNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+                System.out.print("Enter a number to reverse: ");
+        String input = scanner.nextLine();
+        if (!input.matches("-?\\d+")) {
+            System.out.println("Invalid input! Please enter a valid number.");
+            return;
+        }
+        
+        int number = Integer.parseInt(input);        int reversed = 0;
+        boolean isNegative = false;
+        
+        if (number < 0) {
+            isNegative = true;
+            number = -number; 
+        }        while (number > 0) {
+            int digit = number % 10;
+                reversed = reversed * 10 + digit;
+            number /= 10; 
+        }
+        
+        if (isNegative) {
+            reversed = -reversed;
+        }        System.out.println("Reverse Number: " + reversed);
+        
+        scanner.close();
+    }
+}
