@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class EvenSumOfFibonacci {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+        int[] fibonacci = generateFibonacci(n);
+        int evenSum = calculateEvenSum(fibonacci);
+        System.out.println("Sum of Fibonacci numbers at even indexes: " + evenSum);
+
+        scanner.close();
+    }
+    public static int[] generateFibonacci(int n) {
+        if (n <= 0) {
+            return new int[0]; 
+        }
+        int[] fibonacci = new int[n + 1]; 
+        fibonacci[0] = 0; 
+        if (n > 0) {
+            fibonacci[1] = 1; 
+        }
+        for (int i = 2; i <= n; i++) {
+            fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+        }
+
+        return fibonacci;
+    }
+    public static int calculateEvenSum(int[] fibonacci) {
+        int sum = 0;
+        for (int i = 0; i < fibonacci.length; i += 2) {
+            sum += fibonacci[i];
+        }
+
+        return sum;
+    }
+}
