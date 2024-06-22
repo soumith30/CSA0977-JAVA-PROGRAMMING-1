@@ -1,0 +1,27 @@
+public class ShiftArrays {
+    public static void main(String[] args) {
+        int[] A = {1, 2, 3, 4, 5};
+        int[] B = {5, 4, 3, 2, 1};
+        boolean condition = (A.length == B.length && A.length > 0 && B.length > 0);
+        
+        if (condition) {
+            for (int i = 0; i < A.length - 1; i++) {
+                A[i] = A[i] << 1; 
+                B[i] = B[i] >> 1; 
+            }
+        } else {
+            for (int i = 0; i < A.length - 1; i++) {
+                A[i] = A[i] >> 1; 
+                B[i] = B[i] << 1;
+            }
+        }
+        System.out.println("Shifted array A:");
+        for (int num : A) {
+            System.out.print(num + " ");
+        }
+        System.out.println("\nShifted array B:");
+        for (int num : B) {
+            System.out.print(num + " ");
+        }
+    }
+}
