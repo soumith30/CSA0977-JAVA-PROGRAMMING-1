@@ -1,0 +1,19 @@
+public class LogicalGates {
+    public static boolean OR(boolean a, boolean b) {
+        return a || b;
+    }
+    public static boolean AND(boolean a, boolean b) {
+        return a && b;
+    }
+
+    public static void main(String[] args) {
+        boolean input1 = true;
+        boolean input2 = false;
+        boolean resultOR = OR(input1, input2);
+        System.out.println("OR Gate:");
+        System.out.println(input1 + " OR " + input2 + " = " + resultOR);
+        boolean resultAND = AND(input1, input2);
+        System.out.println("\nAND Gate:");
+        System.out.println(input1 + " AND " + input2 + " = " + resultAND);
+    }
+}
