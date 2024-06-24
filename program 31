@@ -1,0 +1,43 @@
+public class MatrixAddition {
+    public static void main(String[] args) {
+        int[][] mat1 = { {1, 2},
+                         {5, 3} };
+        
+        int[][] mat2 = { {2, 3},
+                         {4, 1} };
+
+        int[][] matSum = matrixAddition(mat1, mat2);
+
+        if (matSum != null) {
+            System.out.println("Mat Sum =");
+            for (int i = 0; i < matSum.length; i++) {
+                System.out.print("\t");
+                for (int j = 0; j < matSum[0].length; j++) {
+                    System.out.print(matSum[i][j] + " ");
+                }
+                System.out.println();
+            }
+        }
+    }
+
+    public static int[][] matrixAddition(int[][] mat1, int[][] mat2) {
+        int rows1 = mat1.length;
+        int cols1 = mat1[0].length;
+        int rows2 = mat2.length;
+        int cols2 = mat2[0].length;
+
+        if (rows1 != rows2 || cols1 != cols2) {
+            System.out.println("Matrix dimensions do not match. Addition not possible.");
+            return null;
+        }
+
+        int[][] result = new int[rows1][cols1];
+        for (int i = 0; i < rows1; i++) {
+            for (int j = 0; j < cols1; j++) {
+                result[i][j] = mat1[i][j] + mat2[i][j];
+            }
+        }
+
+        return result;
+    }
+}
