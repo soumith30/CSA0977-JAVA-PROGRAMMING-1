@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class MatrixMultiplication {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int[][] mat1 = { {1, 2},
+                         {5, 3} };
+
+        int[][] mat2 = { {2, 3},
+                         {4, 1} };
+
+        int cols1 = mat1[0].length;
+        int rows2 = mat2.length;
+
+        if (cols1 != rows2) {
+            System.out.println("Matrix multiplication is not possible. Number of columns in the first matrix must be equal to the number of rows in the second matrix.");
+            return;
+        }
+
+        int rows1 = mat1.length;
+        int cols2 = mat2[0].length;
+
+        int[][] result = new int[rows1][cols2];
+
+        for (int i = 0; i < rows1; i++) {
+            for (int j = 0; j < cols2; j++) {
+                for (int k = 0; k < cols1; k++) {
+                    result[i][j] += mat1[i][k] * mat2[k][j];
+                }
+            }
+        }
+
+        System.out.println("Mat Product =");
+        for (int i = 0; i < rows1; i++) {
+            System.out.print("\t");
+            for (int j = 0; j < cols2; j++) {
+                System.out.print(result[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
