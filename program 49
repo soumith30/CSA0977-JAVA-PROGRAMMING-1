@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class ReverseAndAddPalindrome {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a number: ");
+        String input = scanner.nextLine();
+        
+        try {
+            long number = Long.parseLong(input);
+            if (number < 0) {
+                System.out.println("Input must be a positive number.");
+            } else {
+                long result = reverseAndAddPalindrome(number);
+                System.out.println("Palindrome found: " + result);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number.");
+        }
+        
+        scanner.close();
+    }
+        public static long reverseNumber(long num) {
+        long reversed = 0;
+        while (num != 0) {
+            long digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+        return reversed;
+    }
+        public static boolean isPalindrome(long num) {
+        return num == reverseNumber(num);
+    }
+        public static long reverseAndAddPalindrome(long num) {
+        long original = num;
+        while (!isPalindrome(num)) {
+            long reversed = reverseNumber(num);
+            num = num + reversed;
+            System.out.println(num + " (Current Sum)");
+        }
+        return num;
+    }
+}
