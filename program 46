@@ -1,0 +1,47 @@
+import java.util.*;
+
+public class UniquePermutations {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+                System.out.print("Enter a number: ");
+        String number = scanner.next();
+        
+        List<String> uniquePermutations = findUniquePermutations(number);
+                System.out.println("Unique permutations of the number " + number + ":");
+        for (String perm : uniquePermutations) {
+            System.out.println(perm);
+        }
+        
+        scanner.close();
+    }
+    public static List<String> findUniquePermutations(String number) {
+        List<String> result = new ArrayList<>();
+        char[] numArray = number.toCharArray();
+        Arrays.sort(numArray); 
+        
+        boolean[] used = new boolean[number.length()];
+        StringBuilder currentPermutation = new StringBuilder();
+        
+        backtrack(numArray, used, currentPermutation, result);
+        
+        return result;
+    }
+        private static void backtrack(char[] numArray, boolean[] used, StringBuilder currentPermutation, List<String> result) {
+        if (currentPermutation.length() == numArray.length) {
+            result.add(currentPermutation.toString());
+            return;
+        }
+        
+        for (int i = 0; i < numArray.length; i++) {
+            if (used[i] || (i > 0 && numArray[i] == numArray[i - 1] && !used[i - 1])) {
+                continue;
+            }
+            used[i] = true;
+            currentPermutation.append(numArray[i]);
+            backtrack(numArray, used, currentPermutation, result);
+            currentPermutation.deleteCharAt(currentPermutation.length() - 1);
+            used[i] = false;
+        }
+    }
+}
