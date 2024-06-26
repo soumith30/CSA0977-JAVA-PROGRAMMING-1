@@ -1,0 +1,38 @@
+import java.util.Scanner;public class DecimalToBinaryOctal {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a decimal number: ");
+        int decimalNumber = scanner.nextInt();
+        String binary = decimalToBinary(decimalNumber);
+        String octal = decimalToOctal(decimalNumber);
+        System.out.println("Binary equivalent: " + binary);
+        System.out.println("Octal equivalent: " + octal);
+        scanner.close();
+    }
+    private static String decimalToBinary(int decimalNumber) {
+        StringBuilder binary = new StringBuilder();
+        if (decimalNumber == 0) {
+            binary.append("0");
+        } else {
+            while (decimalNumber > 0) {
+                int remainder = decimalNumber % 2;
+                binary.insert(0, remainder); 
+                decimalNumber = decimalNumber / 2;
+            }
+        }
+        return binary.toString();
+    }
+    private static String decimalToOctal(int decimalNumber) {
+        StringBuilder octal = new StringBuilder();
+        if (decimalNumber == 0) {
+            octal.append("0");
+        } else {
+            while (decimalNumber > 0) {
+                int remainder = decimalNumber % 8;
+                octal.insert(0, remainder); 
+                decimalNumber = decimalNumber / 8;
+            }
+        }
+        return octal.toString();
+    }
+}
